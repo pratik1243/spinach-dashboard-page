@@ -1,13 +1,36 @@
-import React, { useState } from "react";
-import { IoIosArrowUp } from "react-icons/io";
+import React, { useState, useRef } from "react";
+import { IoIosArrowUp, IoMdClose } from "react-icons/io";
+import { OutsideClickFunc } from "../../utils/eventsData";
 
-const Dropdown = ({ options, value, label, placeholder, onChange }) => {
+const Dropdown = ({ options, value, placeholder, onChange, clearValue }) => {
+  const divRef = useRef();
   const [open, setOpen] = useState(false);
+
+  OutsideClickFunc(divRef, () => {
+    setOpen(false);
+  });
 
   return (
     <div className="dropdown-section">
-      <div className="dropdown-value" onClick={() => setOpen(!open)}>
-        {value ? value : placeholder} <IoIosArrowUp size={16} />
+      <div
+        className="dropdown-value"
+        ref={divRef}
+        onClick={() => setOpen(!open)}
+      >
+        {value ? value : placeholder}{" "}
+        {value ? (
+          <div
+            role="button"
+            onClick={() => {
+              clearValue();
+              setOpen(false);
+            }}
+          >
+            <IoMdClose size={17} />
+          </div>
+        ) : (
+          <IoIosArrowUp size={16} />
+        )}
       </div>
       {open && (
         <div className="dropdown-option-box">

@@ -1,9 +1,11 @@
+import { useEffect } from "react";
+
 export const eventsDataJson = [
   {
     id: 1,
     title: "Live Concert 2026",
     category: "Music",
-    date: "2026-11-15",
+    date: "15/11/2026",
     time: "7:00 PM",
     location: "Mumbai, India",
     price: 49,
@@ -18,7 +20,7 @@ export const eventsDataJson = [
     id: 2,
     title: "Global Tech Summit",
     category: "Tech",
-    date: "2026-11-18",
+    date: "18/11/2026",
     time: "9:00 AM",
     location: "Dubai, UAE",
     price: 0,
@@ -33,7 +35,7 @@ export const eventsDataJson = [
     id: 3,
     title: "Food Carnival",
     category: "Food",
-    date: "2026-11-21",
+    date: "21/11/2026",
     time: "11:00 AM",
     location: "Delhi, India",
     price: 20,
@@ -48,7 +50,7 @@ export const eventsDataJson = [
     id: 4,
     title: "Modern Art Exhibition",
     category: "Art",
-    date: "2026-11-22",
+    date: "22/11/2026",
     time: "10:00 AM",
     location: "Bangalore, India",
     price: 15,
@@ -63,7 +65,7 @@ export const eventsDataJson = [
     id: 5,
     title: "IPL 2026 Finals",
     category: "Sports",
-    date: "2026-11-23",
+    date: "23/11/2026",
     time: "6:00 PM",
     location: "Ahmedabad, India",
     price: 75,
@@ -78,7 +80,7 @@ export const eventsDataJson = [
     id: 6,
     title: "React Development Workshop",
     category: "Workshop",
-    date: "2026-11-24",
+    date: "24/11/2026",
     time: "10:00 AM",
     location: "Pune, India",
     price: 99,
@@ -93,7 +95,7 @@ export const eventsDataJson = [
     id: 7,
     title: "Yoga & Wellness Retreat",
     category: "Health",
-    date: "2026-11-27",
+    date: "27/11/2026",
     time: "6:00 AM",
     location: "Rishikesh, India",
     price: 0,
@@ -108,7 +110,7 @@ export const eventsDataJson = [
     id: 8,
     title: "Stand-Up Comedy Night",
     category: "Comedy",
-    date: "2026-11-29",
+    date: "29/11/2026",
     time: "8:00 PM",
     location: "Noida, India",
     price: 25,
@@ -178,3 +180,25 @@ export const dateOptions = [
     label: "Custom Date",
   },
 ];
+
+export const formatDate = (date) => {
+  const day = String(date.getDate()).padStart(2, "0");
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const year = date.getFullYear();
+  return `${day}/${month}/${year}`;
+};
+
+export function OutsideClickFunc(ref, onClose) {
+  function handleClickOutside(event) {
+    if (ref.current && !ref.current.contains(event.target)) {
+      onClose();
+    }
+  }
+
+  useEffect(() => {
+    document.addEventListener("click", handleClickOutside);
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, []);
+}

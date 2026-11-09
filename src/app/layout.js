@@ -4,6 +4,8 @@ import "aos/dist/aos.css";
 import "swiper/css/navigation";
 import 'swiper/css/effect-fade';
 import "swiper/css/pagination";
+import 'react-date-range/dist/styles.css';
+import 'react-date-range/dist/theme/default.css';
 import { Poppins } from "next/font/google";
 
 const nunito = Poppins({

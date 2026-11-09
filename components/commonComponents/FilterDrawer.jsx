@@ -5,6 +5,8 @@ import { MdOutlineDelete } from "react-icons/md";
 import { IoMdBookmark } from "react-icons/io";
 import { IoMdClose } from "react-icons/io";
 import { DashboardWrapper } from "../pagesComponents/Dashboard";
+import NoDataComp from "./NoDataComp";
+import { FaRegHeart } from "react-icons/fa6";
 
 const FilterDrawer = () => {
   const { openSavedDrawer, savedEvents, closeSavedDrawer, setSavedEvents } =
@@ -28,29 +30,39 @@ const FilterDrawer = () => {
         </div>
       </div>
       <div className="saved-items-sec">
-        {savedEvents?.map((data, i) => {
-          return (
-            <EventCard
-              key={i}
-              data={data}
-              borderBottomOnly
-              renderBtn={
-                <Button
-                  icon={<MdOutlineDelete size={20} />}
-                  background={"#ff000026"}
-                  textColor={"#ee4848"}
-                  borderColor={"#ff00000f"}
-                  circleBtn
-                  onClick={() => {
-                    setSavedEvents((prev) => {
-                      return prev.filter((el) => el.id !== data.id);
-                    });
-                  }}
-                />
-              }
-            />
-          );
-        })}
+        {savedEvents.length === 0 ? (
+          <NoDataComp
+            customClass="filter-no-data-sec"
+            emptyIcon={<FaRegHeart color="#5c38f5" size={36} />}
+            buttonText={"Browse Events"}
+            text1={"Keep Exploring Events!"}
+            text2={"Save more events to see them here."}
+          />
+        ) : (
+          savedEvents?.map((data, i) => {
+            return (
+              <EventCard
+                key={i}
+                data={data}
+                borderBottomOnly
+                renderBtn={
+                  <Button
+                    icon={<MdOutlineDelete size={20} />}
+                    background={"#ff000026"}
+                    textColor={"#ee4848"}
+                    borderColor={"#ff00000f"}
+                    circleBtn
+                    onClick={() => {
+                      setSavedEvents((prev) => {
+                        return prev.filter((el) => el.id !== data.id);
+                      });
+                    }}
+                  />
+                }
+              />
+            );
+          })
+        )}
       </div>
     </div>
   );

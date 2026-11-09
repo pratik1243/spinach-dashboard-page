@@ -24,7 +24,7 @@ const EventCard = ({ data, renderBtn, borderBottomOnly, animationType }) => {
       <div className="event-card-content">
         <h3 className="title-txt">{data?.title}</h3>
         <span className="date-txt">
-          <MdOutlineDateRange size={16} /> {data?.date} {data?.time}
+          <MdOutlineDateRange size={16} /> {data?.date.split('/').join('-')} {data?.time}
         </span>
         <span className="location-txt">
           <IoLocationOutline size={17} />

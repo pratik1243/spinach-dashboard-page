@@ -6,34 +6,17 @@ import { IoSearch } from "react-icons/io5";
 import { LuBookmark } from "react-icons/lu";
 import navLogo from "../../public/images/navbar-logo.gif";
 import { DashboardWrapper } from "../pagesComponents/Dashboard";
+import SearchInput from "./SearchInput";
 
 const Navbar = () => {
-  const { savedEvents, filters, setOpenSavedDrawer, setFilters } = useContext(DashboardWrapper);
-
+  const { savedEvents, setOpenSavedDrawer } = useContext(DashboardWrapper);
   const [darkTheme, setDarkTheme] = useState(false);
-
-  const onSearchEvent = (e) => {
-    setFilters({
-      ...filters,
-      title: e.target.value.toLowerCase(),
-      isFree: false,
-      category: "",
-    });
-  };
 
   return (
     <div className={`navbar-section nav-scroll-bg`} data-aos="fade-down">
       <div className="nav-section-1">
         <Image src={navLogo} height={60} width={180} alt="nav-logo" />
-        <div className="search-input">
-          <IoSearch size={18} />
-          <input
-            type="text"
-            value={filters.title}
-            placeholder="Search events... (e.g. concerts, tech, workshops)"
-            onChange={onSearchEvent}
-          />
-        </div>
+        <SearchInput /> 
       </div>
 
       <div className="nav-section-2">

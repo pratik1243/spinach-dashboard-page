@@ -17,7 +17,8 @@ body {
   background-color: #d7e0da2e;
 }
 
-h3 {
+h3,
+h2 {
   font-weight: 500;
 }
 
@@ -61,11 +62,11 @@ h3 {
 }
 
 input:checked + .slider {
-  background-color: var(--primary-color);
+  background-color: var(--primary-color) !important;
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px var(--primary-color);
+  box-shadow: 0 0 1px var(--primary-color) !important;
 }
 
 input:checked + .slider:before {
@@ -428,6 +429,8 @@ body:has(.filter-drawer-section.open, .event-filter-drawer-section.open) {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
+  z-index: 1;
 }
 
 .event-filter-section .event-filter-action-sec svg {
@@ -517,9 +520,10 @@ body:has(.filter-drawer-section.open, .event-filter-drawer-section.open) {
 
 .dropdown-section {
   position: relative;
-  width: 135px;
+  width: 150px;
 }
 
+.date-picker-sec .date-value,
 .dropdown-section .dropdown-value {
   background-color: #e9e6e6;
   padding: 5px 16px;
@@ -539,6 +543,7 @@ body:has(.filter-drawer-section.open, .event-filter-drawer-section.open) {
   height: 20px;
 }
 
+.date-picker-sec .date-value svg,
 .dropdown-section .dropdown-value svg {
   margin-right: 0;
   position: absolute;
@@ -577,11 +582,18 @@ body:has(.filter-drawer-section.open, .event-filter-drawer-section.open) {
   display: none;
 }
 
+.event-filter-btns-mobile .search-input {
+  grid-column: 1 / -1;
+  margin-left: 0;
+  width: auto;
+  display: block !important;
+}
+
 .event-filter-drawer-section {
   position: fixed;
   left: 0;
   right: 0;
-  top: 22%;
+  top: 10%;
   bottom: 0;
   z-index: 1200;
   /* padding: 23px; */
@@ -626,6 +638,93 @@ body:has(.filter-drawer-section.open, .event-filter-drawer-section.open) {
   margin-left: 20px;
 }
 
+.no-data-comp-section {
+  text-align: center;
+  grid-column: 1 / -1;
+  padding: 45px 20px;
+  border-radius: 16px;
+  border: 1px solid var(--grey-color);
+  background-color: var(--white-color);
+  box-shadow: 0px 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.no-data-comp-section h2 {
+  margin-bottom: 0;
+  margin-top: 10px;
+}
+
+.no-data-comp-section p {
+  margin-top: 9px;
+  color: rgb(148, 147, 147);
+  font-size: 15px;
+  margin-bottom: 0;
+}
+
+.no-data-comp-section button {
+  margin: auto;
+}
+
+.filter-no-data-sec {
+  box-shadow: none;
+  border: none;
+  width: 410px;
+  padding: 0;
+  background-color: #f2f5f3;
+  padding: 23px;
+  margin-top: 30px;
+  border: 1px solid var(--grey-color);
+}
+
+.filter-no-data-sec h2 {
+  font-size: 22px;
+  margin-bottom: 0;
+}
+
+.filter-no-data-sec p {
+  font-weight: 400;
+  margin-top: 5px;
+  font-size: 13px;
+}
+
+.filter-no-data-sec button {
+  margin-top: 25px;
+  padding: 10px 22px !important;
+  border-radius: 15px !important;
+}
+
+.date-picker-sec .date-picker-box {
+  position: absolute;
+  border: 1px solid var(--grey-color);
+  background-color: var(--white-color);
+  box-shadow: 0px 4px 6px -1px rgba(0, 0, 0, 0.1);
+  border-radius: 13px;
+  z-index: 1;
+  overflow: hidden;
+  left: 0;
+  right: 0;
+  top: 53px;
+}
+
+.date-picker-box * {
+  transition: unset !important;
+}
+
+.date-picker-box .rdrCalendarWrapper {
+  width: 100%;
+}
+
+.date-picker-box .rdrMonth {
+  width: auto;
+  padding-bottom: 8px;
+}
+
+.date-picker-box .rdrDateDisplayWrapper {
+  display: none;
+}
+
+.date-picker-box .rdrMonthAndYearWrapper {
+  padding-top: 0px;
+}
 
 /* Dark Mode CSS */
 
@@ -636,6 +735,18 @@ body:has(.dark-theme) .filter-drawer-section .event-card .event-card-content,
 body:has(.dark-theme) .events-cotent-sec,
 body:has(.dark-theme) .main-content {
   background: #171515;
+}
+
+body:has(.dark-theme) .date-picker-sec .date-value,
+body:has(.dark-theme) .dropdown-section .dropdown-value {
+  color: var(--white-color);
+  background: #171515;
+  border: 1px solid #818783;
+}
+
+body:has(.dark-theme) .dropdown-section .dropdown-option-box {
+  background: #171515;
+  border-color: #818783 !important;
 }
 
 body:has(.dark-theme) .event-filter-drawer-section .filter-head-sec,
@@ -677,8 +788,13 @@ body:has(.dark-theme) .filter-drawer-section .close-btn {
   font-weight: 400;
 }
 
+body:has(.dark-theme) .dropdown-section .dropdown-option-box .dropdown-option,
 body:has(.dark-theme) .event-filter-section .event-filter-action-sec .action-txt {
   color: grey;
+}
+
+body:has(.dark-theme) .slider {
+  background-color: #6a6565;
 }
 
 body:has(.dark-theme) .search-input input,
@@ -707,6 +823,27 @@ body:has(.dark-theme) .filter-drawer-section .saved-filter-head .length-badge {
   background-color: #5c38f54f;
 }
 
+body:has(.dark-theme) .no-data-comp-section {
+  background-color: #f2f5f317;
+  border-color: #818783 !important;
+}
+
+body:has(.dark-theme) .no-data-comp-section h2 {
+  color: var(--white-color);
+}
+
+body:has(.dark-theme) .date-picker-box * {
+  background: #171515;
+  color: grey;
+}
+
+body:has(.dark-theme) .search-input input {
+  color: rgb(172, 169, 169);
+}
+
+body:has(.dark-theme) .dropdown-section .dropdown-option-box .dropdown-option:hover {
+  background-color: #e9e6e621;
+}
 
 /* Media Queries CSS */
 
@@ -725,6 +862,15 @@ body:has(.dark-theme) .filter-drawer-section .saved-filter-head .length-badge {
 @media (max-width: 768px) {
   .event-filter-section {
     grid-template-columns: repeat(1, 1fr);
+  }
+
+  .filter-no-data-sec {
+    width: auto;
+  }
+
+  .search-input {
+    display: none;
+    max-width: 85%;
   }
 }
 
@@ -795,12 +941,20 @@ body:has(.dark-theme) .filter-drawer-section .saved-filter-head .length-badge {
   }
 
   .hero-section .hero-content-section .para-txt {
-    font-size: 10px;
+    font-size: 10.5px;
   }
 }
 
-@media(max-width: 360px){
+@media (max-width: 360px) {
   .saved-events-btn {
     font-size: 12.5px;
+  }
+
+  .filter-no-data-sec h2 {
+    font-size: 20px;
+  }
+
+  .search-input {
+    max-width: 80%;
   }
 }

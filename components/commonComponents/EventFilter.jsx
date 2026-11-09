@@ -6,48 +6,65 @@ import { FaGift } from "react-icons/fa6";
 import Dropdown from "./Dropdown";
 import { categoryOptions, dateOptions } from "../../utils/eventsData";
 import { DashboardWrapper } from "../pagesComponents/Dashboard";
+import DatePicker from "./DatePicker";
 
 const EventFilter = ({
   onFreeEventChange,
   onCategoryChange,
   onPriceChange,
+  onDateChange,
 }) => {
-  const { filters } = useContext(DashboardWrapper);
+  const { filters, setFilters } = useContext(DashboardWrapper);
   return (
     <div className="event-filter-section">
-      <div className="event-filter-action-sec">
+      <div
+        className="event-filter-action-sec"
+        data-aos="fade"
+        data-aos-delay="100"
+      >
         <div className="inner-action-sec">
           {" "}
           <RiLayoutMasonryFill />
           <span className="action-txt">Category</span>
         </div>
-
         <Dropdown
           value={filters.category}
           placeholder={"All Category"}
           options={categoryOptions}
           onChange={(data) => onCategoryChange(data.label)}
+          clearValue={() => {
+            setFilters({ ...filters, category: "" });
+          }}
         />
       </div>
-      <div className="event-filter-action-sec">
+      <div
+        className="event-filter-action-sec"
+        data-aos="fade"
+        data-aos-delay="100"
+      >
         <div className="inner-action-sec">
           <FaCalendarAlt />
           <span className="action-txt">Date</span>
         </div>
-
-        <Dropdown
+        <DatePicker
           value={filters.dateType}
-          placeholder={"Any Date"}
-          options={dateOptions}
-          onChange={(data) => {}}
+          onChange={(data) => {
+            onDateChange(data);
+          }}
+          clearValue={() => {
+            setFilters({ ...filters, dateType: "" });
+          }}
         />
       </div>
-      <div className="event-filter-action-sec">
+      <div
+        className="event-filter-action-sec"
+        data-aos="fade"
+        data-aos-delay="100"
+      >
         <div className="inner-action-sec">
           <ImPriceTags />
           <span className="action-txt">Price Range</span>
         </div>
-
         <div className="range-slider">
           <input
             type="range"
@@ -58,12 +75,15 @@ const EventFilter = ({
           />
         </div>
       </div>
-      <div className="event-filter-action-sec">
+      <div
+        className="event-filter-action-sec"
+        data-aos="fade"
+        data-aos-delay="100"
+      >
         <div className="inner-action-sec">
           <FaGift />
           <span className="action-txt">Free Events Only </span>
         </div>
-
         <label className="switch">
           <input
             type="checkbox"
