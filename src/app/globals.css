@@ -433,6 +433,11 @@ body:has(.filter-drawer-section.open, .event-filter-drawer-section.open) {
   z-index: 1;
 }
 
+.event-filter-section .event-filter-action-sec:nth-child(1),
+.event-filter-section .event-filter-action-sec:nth-child(2) {
+  z-index: 10;
+}
+
 .event-filter-section .event-filter-action-sec svg {
   margin-right: 10px;
 }

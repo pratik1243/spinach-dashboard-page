@@ -63,7 +63,7 @@ const EventFilter = ({
       >
         <div className="inner-action-sec">
           <ImPriceTags />
-          <span className="action-txt">Price Range</span>
+          <span className="action-txt">Price Range $(0-100)</span>
         </div>
         <div className="range-slider">
           <input
