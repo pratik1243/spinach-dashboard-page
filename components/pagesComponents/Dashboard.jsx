@@ -141,7 +141,13 @@ const Dashboard = () => {
                       }
                       className={"on-save-btn"}
                       onClick={() => {
-                        setSavedEvents([...savedEvents, { ...data }]);
+                        if (isSavedEventsIncludes(data)) {
+                          setSavedEvents(
+                            savedEvents.filter((el) => el.id !== data.id)
+                          );
+                        } else {
+                          setSavedEvents([...savedEvents, { ...data }]);
+                        }
                       }}
                     />
                   }

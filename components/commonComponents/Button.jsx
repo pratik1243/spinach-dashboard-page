@@ -10,6 +10,7 @@ const Button = ({
   circleBtn,
   className,
   badge,
+  endIcon,
   ...rest
 }) => {
   return (
@@ -29,7 +30,8 @@ const Button = ({
       }}
       onClick={onClick}
     >
-      {icon || null} {text && <span>{text}</span>}
+      {icon || null} {text && <span>{text}</span>}{" "}
+      {endIcon ? <span>&nbsp;&nbsp;{endIcon}</span> : null}
       {badge > 0 && <div className="badge">{badge}</div>}
     </button>
   );

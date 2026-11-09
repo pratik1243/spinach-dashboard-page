@@ -4,27 +4,32 @@ import { eventsDataJson } from "../utils/eventsData";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, EffectFade } from "swiper/modules";
 import Image from "next/image";
+import { IoArrowForwardOutline } from "react-icons/io5";
 
 const HeroSection = () => {
   return (
     <div className="hero-section">
       <div className="hero-inner-section">
         <div className="hero-content-section">
-          <h2 className="head-txt1" data-aos="fade">Discover Amazing</h2>
+          <h2 className="head-txt1" data-aos="fade">
+            Discover Amazing
+          </h2>
           <h2 className="head-txt2" data-aos="fade" data-aos-delay="100">
             {" "}
             <span>Events</span> Near Yours!
           </h2>
           <p className="para-txt" data-aos="fade" data-aos-delay="200">
-            Concerts <span className="category-dot"></span> Workshops{" "}
-            <span className="category-dot"></span> Tech Talks{" "}
-            <span className="category-dot"></span> Food Festivals & More
+            <span>Concerts</span> <span className="category-dot"></span>{" "}
+            <span>Workshops</span> <span className="category-dot"></span>{" "}
+            <span>Tech Talks</span> <span className="category-dot"></span>{" "}
+            <span>Food Festivals</span>
           </p>
           <Button
             data-aos="fade"
             data-aos-delay="300"
             className={"check-event-btn"}
             text={"Check Events"}
+            endIcon={<IoArrowForwardOutline size={18} />}
             background={"#5c38f5"}
             textColor={"#fff"}
             borderColor={"#5c38f5"}

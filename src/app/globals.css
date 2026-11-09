@@ -504,6 +504,7 @@ body:has(.filter-drawer-section.open, .event-filter-drawer-section.open) {
   border-radius: 16px;
   margin: auto;
   margin-top: 36px;
+  padding-bottom: 9px;
 }
 
 .event-slider-card .slider-image-sec {
@@ -577,11 +578,12 @@ body:has(.filter-drawer-section.open, .event-filter-drawer-section.open) {
   position: fixed;
   left: 0;
   right: 0;
+  top: 22%;
   bottom: 0;
   z-index: 1200;
   /* padding: 23px; */
-  transform: translateY(600px);
-  background-color: var(--white-color);
+  transform: translateY(1100px);
+  background-color: #f8f9f8;
   border: 1px solid var(--grey-color);
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
@@ -600,6 +602,7 @@ body:has(.filter-drawer-section.open, .event-filter-drawer-section.open) {
   justify-content: space-between;
   padding: 16px 20px;
   border-bottom: 1px solid var(--grey-color);
+  background-color: var(--white-color);
 }
 
 .event-filter-drawer-section .filter-head-sec h3 {
@@ -620,7 +623,11 @@ body:has(.filter-drawer-section.open, .event-filter-drawer-section.open) {
   margin-left: 20px;
 }
 
+
+/* Dark Mode CSS */
+
 body:has(.dark-theme),
+body:has(.dark-theme) .event-filter-drawer-section,
 body:has(.dark-theme) .event-filter-drawer-section .event-filter-section,
 body:has(.dark-theme) .filter-drawer-section .event-card .event-card-content,
 body:has(.dark-theme) .events-cotent-sec,
@@ -693,6 +700,13 @@ body:has(.dark-theme) .event-card .free-txt {
   background-color: #062d08;
 }
 
+body:has(.dark-theme) .filter-drawer-section .saved-filter-head .length-badge {
+  background-color: #5c38f54f;
+}
+
+
+/* Media Queries CSS */
+
 @media (max-width: 991px) {
   .event-card-section {
     grid-template-columns: repeat(2, 1fr);
@@ -724,7 +738,7 @@ body:has(.dark-theme) .event-card .free-txt {
     width: auto !important;
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
-    transform: translateY(800px);
+    transform: translateY(1100px);
     border: 1px solid var(--grey-color);
     left: 0;
   }
@@ -763,5 +777,27 @@ body:has(.dark-theme) .event-card .free-txt {
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 21px;
     margin-bottom: 31px;
+  }
+
+  .events-cotent-sec {
+    padding: 25px 18px;
+  }
+
+  .navbar-section {
+    padding-left: 0;
+  }
+
+  .hero-section .hero-content-section .para-txt .category-dot {
+    margin: 0px 6px;
+  }
+
+  .hero-section .hero-content-section .para-txt {
+    font-size: 10px;
+  }
+}
+
+@media(max-width: 360px){
+  .saved-events-btn {
+    font-size: 12.5px;
   }
 }
