@@ -96,7 +96,7 @@ export const eventsDataJson = [
     date: "2026-11-27",
     time: "6:00 AM",
     location: "Rishikesh, India",
-    price: 30,
+    price: 0,
     currency: "USD",
     image: "/images/yoga-retreat.jpg",
     tags: ["Yoga", "Meditation", "Wellness"],

@@ -313,6 +313,7 @@ input:checked + .slider:before {
   grid-template-columns: 1fr 2fr;
   width: 460px;
   cursor: default;
+  place-items: center;
 }
 
 .filter-drawer-section .event-card .event-card-image {

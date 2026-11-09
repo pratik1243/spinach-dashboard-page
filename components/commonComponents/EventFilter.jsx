@@ -7,7 +7,11 @@ import Dropdown from "./Dropdown";
 import { categoryOptions, dateOptions } from "../../utils/eventsData";
 import { DashboardWrapper } from "../pagesComponents/Dashboard";
 
-const EventFilter = ({ onFreeEventChange, onCategoryChange }) => {
+const EventFilter = ({
+  onFreeEventChange,
+  onCategoryChange,
+  onPriceChange,
+}) => {
   const { filters } = useContext(DashboardWrapper);
   return (
     <div className="event-filter-section">
@@ -45,7 +49,13 @@ const EventFilter = ({ onFreeEventChange, onCategoryChange }) => {
         </div>
 
         <div className="range-slider">
-          <input type="range" min="0" max="100" />
+          <input
+            type="range"
+            min="0"
+            max="100"
+            value={filters.price}
+            onChange={(e) => onPriceChange(e.target.value)}
+          />
         </div>
       </div>
       <div className="event-filter-action-sec">

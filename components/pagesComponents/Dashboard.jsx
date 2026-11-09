@@ -23,6 +23,7 @@ const Dashboard = () => {
   const [savedEvents, setSavedEvents] = useState([]);
   const [filters, setFilters] = useState({
     title: "",
+    price: 0,
     isFree: false,
     category: "",
     dateType: "",
@@ -38,6 +39,8 @@ const Dashboard = () => {
       return data.isFree === true;
     } else if (filters.category) {
       return data.category === filters.category;
+    } else if (filters.price > 0) {
+      return data.price > 0 && data.price < filters.price;
     } else {
       return data.title.toLowerCase().includes(filters.title.toLowerCase());
     }
@@ -118,10 +121,19 @@ const Dashboard = () => {
                 category: value,
               });
             }}
+            onPriceChange={(value)=>{
+               setFilters({
+                ...filters,
+                isFree: false,
+                price: value,
+                title: "",
+                category: "",
+              });
+            }}
           />
           <div
             className="event-card-section"
-            key={`${filters.title}-${filters.isFree}-${filters.category}`}
+            key={`${filters.title}-${filters.isFree}-${filters.category}-${filters.price}`}
           >
             {filteredEvents.map((data, i) => {
               return (
