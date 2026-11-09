@@ -877,6 +877,10 @@ body:has(.dark-theme) .dropdown-section .dropdown-option-box .dropdown-option:ho
     display: none;
     max-width: 85%;
   }
+
+  .event-filter-section:has(.dropdown-option-box) .event-filter-action-sec:nth-child(2) {
+    z-index: 1 !important;
+  }
 }
 
 @media (max-width: 576px) {
@@ -947,10 +951,6 @@ body:has(.dark-theme) .dropdown-section .dropdown-option-box .dropdown-option:ho
 
   .hero-section .hero-content-section .para-txt {
     font-size: 10.5px;
-  }
-
-  .event-filter-section:has(.dropdown-option-box) .event-filter-action-sec:nth-child(2) {
-    z-index: 1 !important;
   }
 }
 
