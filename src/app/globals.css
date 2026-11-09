@@ -211,6 +211,8 @@ input:checked + .slider:before {
 
 .event-card .event-card-content {
   padding: 17px;
+  width: 87%;
+  padding-right: 0;
 }
 
 .event-card.borderBottomOnly {
